@@ -2979,4 +2979,13 @@
   <data name="slot_usage" xml:space="preserve">
     <value>`{0}slot 5`</value>
   </data>
+  <data name="bnsmarket_cmd" xml:space="preserve">
+    <value>market</value>
+  </data>
+  <data name="bnsmarket_desc" xml:space="preserve">
+    <value>Search items on the european bns market</value>
+  </data>
+  <data name="bnsmarket_usage" xml:space="preserve">
+    <value>`{0}market Moonstone`</value>
+  </data>
 </root>

@@ -924,6 +924,33 @@ namespace NadekoBot.Resources {
         }
         
         /// <summary>
+        ///    Looks up a localized string similar to market.
+        /// </summary>
+        public static string bnsmarket_cmd {
+            get {
+                return ResourceManager.GetString("bnsmarket_cmd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Looks up a localized string similar to Search items on the european bns market.
+        /// </summary>
+        public static string bnsmarket_desc {
+            get {
+                return ResourceManager.GetString("bnsmarket_desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Looks up a localized string similar to `{0}market Moonstone`.
+        /// </summary>
+        public static string bnsmarket_usage {
+            get {
+                return ResourceManager.GetString("bnsmarket_usage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///    Looks up a localized string similar to boobs.
         /// </summary>
         public static string boobs_cmd {

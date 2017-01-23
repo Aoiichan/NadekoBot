@@ -17,6 +17,7 @@ using ImageSharp;
 using NadekoBot.Extensions;
 using System.IO;
 using NadekoBot.Modules.Searches.Commands.OMDB;
+using NadekoBot.Modules.Searches.Commands.BladeAndSoul;
 using NadekoBot.Modules.Searches.Commands.Models;
 using AngleSharp.Parser.Html;
 using AngleSharp;
@@ -24,6 +25,7 @@ using AngleSharp.Dom.Html;
 using AngleSharp.Dom;
 using System.Xml;
 using System.Xml.Linq;
+
 
 namespace NadekoBot.Modules.Searches
 {
@@ -86,6 +88,21 @@ namespace NadekoBot.Modules.Searches
                 return;
             }
             await Context.Channel.EmbedAsync(movie.GetEmbed()).ConfigureAwait(false);
+        }
+
+        [NadekoCommand, Usage, Description, Aliases]
+        public async Task BnsMarket([Remainder] string query = null)
+        {
+            if (!(await ValidateQuery(Context.Channel, query).ConfigureAwait(false))) return;
+            await Context.Channel.TriggerTypingAsync().ConfigureAwait(false);
+
+            var item = await BnsMarketProvider.FindItem(query);
+            if (item == null)
+            {
+                await Context.Channel.SendErrorAsync("Failed to find that item.").ConfigureAwait(false);
+                return;
+            }
+            await Context.Channel.EmbedAsync(item.GetEmbed()).ConfigureAwait(false);
         }
 
         [NadekoCommand, Usage, Description, Aliases]
