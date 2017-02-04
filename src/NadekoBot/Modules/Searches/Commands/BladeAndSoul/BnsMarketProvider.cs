@@ -10,13 +10,13 @@ namespace NadekoBot.Modules.Searches.Commands.BladeAndSoul
 {
     public static class BnsMarketProvider
     {
-        private const string queryUrl = "http://www.bns.academy/enter/wp-content/themes/jupiter/market_sources/discordMarket.php?q={0}&region=eu&exact=1";
+        private const string queryUrl = "http://www.bns.academy/enter/wp-content/themes/jupiter/market_sources/discordMarket.php?q={0}&region={1}&{2}=1";
 
-        public static async Task<BnsItem> FindItem(string name)
+        public static async Task<BnsItem> FindItem(string name, string region, string exact)
         {
             using (var http = new HttpClient())
             {
-                var res = await http.GetStringAsync(String.Format(queryUrl, name.Trim().Replace(' ', '+'))).ConfigureAwait(false);
+                var res = await http.GetStringAsync(String.Format(queryUrl, name.Trim().Replace(' ', '+'), region, exact)).ConfigureAwait(false);
                 var item = JsonConvert.DeserializeObject<BnsItem>(res);
                 if (item?.Name == null)
                     return null;
@@ -43,7 +43,7 @@ namespace NadekoBot.Modules.Searches.Commands.BladeAndSoul
                               .AddField(efb => efb.WithName("Silver").WithValue(Silver).WithIsInline(true))
                               .AddField(efb => efb.WithName("Copper").WithValue(Copper).WithIsInline(true))
                               .WithCurrentTimestamp()
-                              .WithFooter(efb => efb.WithText("Spiritus Deos |  Developped by Nagu"));
+                              .WithFooter(efb => efb.WithText("Service provided by BnS Academy"));
 
         public override string ToString() =>
 $@"`Name:` {Name}
