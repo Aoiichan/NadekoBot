@@ -10,7 +10,7 @@ namespace NadekoBot.Modules.Searches.Commands.BladeAndSoul
 {
     public static class BnsMarketProvider
     {
-        private const string queryUrl = "http://www.bns.academy/enter/wp-content/themes/jupiter/market_sources/discordMarket.php?q={0}&region={1}&{2}=1";
+        private const string queryUrl = "http://nostalgic.cc/bns/discordMarket.php?q={0}&region={1}&{2}=1";
 
         public static async Task<BnsItem> FindItem(string name, string region, string exact)
         {
@@ -37,11 +37,11 @@ namespace NadekoBot.Modules.Searches.Commands.BladeAndSoul
 
         public EmbedBuilder GetEmbed() =>
             new EmbedBuilder().WithOkColor()
-                              .WithImageUrl(Icon)
                               .WithTitle(Name)
                               .AddField(efb => efb.WithName("Gold").WithValue(Gold).WithIsInline(true))
                               .AddField(efb => efb.WithName("Silver").WithValue(Silver).WithIsInline(true))
                               .AddField(efb => efb.WithName("Copper").WithValue(Copper).WithIsInline(true))
+                              .WithImageUrl(Icon)
                               .WithCurrentTimestamp()
                               .WithFooter(efb => efb.WithText("Service provided by BnS Academy"));
 
