@@ -32,7 +32,7 @@ namespace NadekoBot.Services.Impl
         public int TotalShards { get; }
         public string CarbonKey { get; }
 
-        private readonly string _credsFileName = Path.Combine(Directory.GetCurrentDirectory(), "credentials.json");
+        private readonly string _credsFileName = "./credentials.json";
         public string PatreonAccessToken { get; }
         public string ShardRunCommand { get; }
         public string ShardRunArguments { get; }

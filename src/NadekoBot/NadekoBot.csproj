@@ -5,13 +5,13 @@
     <Copyright>Kwoth</Copyright>
     <Authors>Kwoth</Authors>
     <PublisherName>Kwoth</PublisherName>
-    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <AssemblyName>NadekoBot</AssemblyName>
     <OutputType>Exe</OutputType>
     <PackageId>NadekoBot</PackageId>
-    <RuntimeFrameworkVersion>1.1.1</RuntimeFrameworkVersion>
-    <PackageTargetFallback>$(PackageTargetFallback);dnxcore50;portable-net45+win8+wpa81</PackageTargetFallback>
+    <RuntimeFrameworkVersion>2.1.0-preview2-25601-02</RuntimeFrameworkVersion>
+    <!--<PackageTargetFallback>$(PackageTargetFallback);dnxcore50;portable-net45+win8+wpa81</PackageTargetFallback>-->
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
@@ -20,7 +20,7 @@
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <FileVersion>1.0.0.0</FileVersion>
     <ApplicationIcon>nadeko_icon.ico</ApplicationIcon>
-    <RuntimeIdentifiers>win7-x64<!--;ubuntu.14.04-x64;osx.10.10-x64 --></RuntimeIdentifiers>
+    <RuntimeIdentifiers><!--win7-x64;-->ubuntu.16.04-arm<!--;ubuntu.14.04-x64;osx.10.10-x64--></RuntimeIdentifiers>
     </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Version)' == '' ">
@@ -66,18 +66,27 @@
     <PackageReference Include="Google.Apis.Customsearch.v1" Version="1.20.0.466" />
     <PackageReference Include="ImageSharp" Version="1.0.0-alpha9-00173" />
     <PackageReference Include="ImageSharp.Drawing" Version="1.0.0-alpha9-00168" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="1.1.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="1.1.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="1.1.1" />
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="1.1.1" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="1.1.1" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="1.1.1" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="1.1.1" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="1.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.0-preview1-26462" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.1.0-preview1-26462" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.1.0-preview1-26462" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.1.0-preview1-26462" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.1.0-preview1-26462" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.1.0-preview1-26462" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.1.0-preview1-26462" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.1.0-preview1-26462" />
+    <!--<PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.0.0-preview2-final" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.0.0-preview2-final" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.0.0-preview2-final" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.0.0-preview2-final" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.0.0-preview2-final" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.0.0-preview2-final" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.0.0-preview2-final" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.0.0-preview2-final" />-->
     <PackageReference Include="Microsoft.Extensions.PlatformAbstractions" Version="1.1.0" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
     <PackageReference Include="NLog" Version="5.0.0-beta03" />
     <PackageReference Include="NYoutubeDL" Version="0.4.4" />
+    <PackageReference Include="SQLitePCLRaw.lib.e_sqlite3.linux" Version="1.1.8-pre20170717084758" />
     <PackageReference Include="System.ValueTuple" Version="4.4.0-preview1-25305-02" />
     <PackageReference Include="System.Xml.XPath" Version="4.3.0" />
   </ItemGroup>
@@ -88,7 +97,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="1.0.0" />
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.1.0-preview1-26462" />
     <DotNetCliToolReference Include="Microsoft.DotNet.Watcher.Tools" Version="1.0.0" />
   </ItemGroup>
 </Project>
