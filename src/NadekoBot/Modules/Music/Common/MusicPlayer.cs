@@ -206,6 +206,7 @@ namespace NadekoBot.Modules.Music.Common
                         while ((bytesRead = b.Read(buffer, 0, buffer.Length)) > 0
                         && (MaxPlaytimeSeconds <= 0 || MaxPlaytimeSeconds >= CurrentTime.TotalSeconds))
                         {
+                            _log.Info("Read {bytesRead}");
                             AdjustVolume(buffer, Volume);
                             await pcm.WriteAsync(buffer, 0, bytesRead, cancelToken).ConfigureAwait(false);
                             unchecked { _bytesSent += bytesRead; }
@@ -387,8 +388,9 @@ namespace NadekoBot.Modules.Music.Common
                     _log.Info("Connecting");
                     _audioClient = await VoiceChannel.ConnectAsync();
                 }
-                catch
+                catch (Exception e)
                 {
+                    _log.Warn(e.ToString());
                     return null;
                 }
             return _audioClient;
