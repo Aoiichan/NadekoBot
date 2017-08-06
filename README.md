@@ -8,11 +8,11 @@ On Windows :
 - Download & install the installer dotnet sdk cli 2.1.0: https://github.com/dotnet/cli
 - Clone the repository with git.
 - Open a terminal in `src/NadekoBot` (windows with `ctrl + L` + `powershell` because `cmd` doesn't work).
-- Add the pkg [EntityFrameworkCore.Tools.Dotnet][2] with
+- Add the pkg [EntityFrameworkCore.Tools.Dotnet][3] with
 ```
 dotnet add package Microsoft.EntityFrameworkCore.Tools.DotNet --version 2.1.0-preview1-26462 --source https://dotnet.myget.org/F/aspnetcore-dev/api/v3/index.json
 ```
-- Add the pkg [Microsoft.NETCore.App][3] with
+- Add the pkg [Microsoft.NETCore.App][4] with
 ```
 dotnet add package Microsoft.NETCore.App --version 2.1.0-preview2-25601-02 --source https://dotnet.myget.org/F/dotnet-core/api/v3/index.json
 ```
@@ -32,13 +32,14 @@ On windows :
 On raspberry :
 - Go in the `publish` folder.
 - `chmod a+xrw` * (you can set more appropriates permissions, but this isn't the purpose of this guide).
-- `./NadekoBot`, 1st boot can take 2min. You can use `tmux` for background run [guide][4].
+- `./NadekoBot`, 1st boot can take 2min. You can use `tmux` for background run [guide][5].
 ## Issues
-If you have an issue, report it (here)[https://github.com/Taknok/NadekoBot/issues/new].
+If you have an issue, report it [here][2].
 Check current issues [here][1].
 
 [1]:https://github.com/Taknok/NadekoBot/issues
-[2]:https://dotnet.myget.org/feed/aspnetcore-dev/package/nuget/Microsoft.EntityFrameworkCore.Tools.DotNet
-[3]:https://dotnet.myget.org/feed/dotnet-core/package/nuget/Microsoft.NETCore.App/2.1.0-preview2-25601-02
-[4]:http://nadekobot.readthedocs.io/en/latest/guides/Linux%20Guide/#additional-information
+[2]:https://github.com/Taknok/NadekoBot/issues/new
+[3]:https://dotnet.myget.org/feed/aspnetcore-dev/package/nuget/Microsoft.EntityFrameworkCore.Tools.DotNet
+[4]:https://dotnet.myget.org/feed/dotnet-core/package/nuget/Microsoft.NETCore.App/2.1.0-preview2-25601-02
+[5]:http://nadekobot.readthedocs.io/en/latest/guides/Linux%20Guide/#additional-information
 Credits : Kwoth and everyone else working on NadekoBot
