@@ -1,12 +1,44 @@
-![img](https://ci.appveyor.com/api/projects/status/gmu6b3ltc80hr3k9?svg=true)
-[![Discord](https://discordapp.com/api/guilds/117523346618318850/widget.png)](https://discord.gg/nadekobot)
-[![Documentation Status](https://readthedocs.org/projects/nadekobot/badge/?version=latest)](http://nadekobot.readthedocs.io/en/latest/?badge=latest)
-[![nadeko0](https://cdn.discordapp.com/attachments/266240393639755778/281920716809699328/part1.png)](https://nadekobot.me)
-[![nadeko1](https://cdn.discordapp.com/attachments/266240393639755778/281920134967328768/part2.png)](https://discordapp.com/oauth2/authorize?client_id=170254782546575360&scope=bot&permissions=66186303)
-[![nadeko2](https://cdn.discordapp.com/attachments/266240393639755778/281920161311883264/part3.png)](http://nadekobot.readthedocs.io/en/latest/Commands%20List/)
+# Raspberry pi
+This project is tested only on raspbian.<br>
+This is more a hack for the moment, check the current [issues][1] !
+## Installation guide
+### Setup
+On Windows :
+- Download & install git : https://desktop.github.com/
+- Download & install the installer dotnet sdk cli 2.1.0: https://github.com/dotnet/cli
+- Clone the repository with git.
+- Open a terminal in `src/NadekoBot` (windows with `ctrl + L` + `powershell` because `cmd` doesn't work).
+- Add the pkg [EntityFrameworkCore.Tools.Dotnet][2] with
+```
+dotnet add package Microsoft.EntityFrameworkCore.Tools.DotNet --version 2.1.0-preview1-26462 --source https://dotnet.myget.org/F/aspnetcore-dev/api/v3/index.json
+```
+- Add the pkg [Microsoft.NETCore.App][3] with
+```
+dotnet add package Microsoft.NETCore.App --version 2.1.0-preview2-25601-02 --source https://dotnet.myget.org/F/dotnet-core/api/v3/index.json
+```
+On Raspberry :
+- `sudo apt update`
+- `sudo apt upgrade`
+- `sudo apt install libunwind8 libunwind8-dev gettext libicu-dev liblttng-ust-dev libcurl4-openssl-dev libssl-dev uuid-dev unzip`
 
-## For Updates, Help and Guidelines
+### Build
+On windows :
+- `dotnet restore`
+- `dotnet publish -r ubuntu.16.04-arm -c Release`
+- Create your `credential.json` : http://nadekobot.readthedocs.io/en/latest/JSON%20Explanations/
+- Copy `credential.json` in `./bin/Release/netcoreapp2.0/ubuntu.16.04-arm/publish`.
+- Transfert `publish` from `./bin/Release/netcoreapp2.0/ubuntu.16.04-arm/` to the raspberry.
 
-| [![twitter](https://cdn.discordapp.com/attachments/155726317222887425/252192520094613504/twiter_banner.JPG)](https://twitter.com/TheNadekoBot) | [![discord](https://cdn.discordapp.com/attachments/266240393639755778/281920766490968064/discord.png)](https://discord.gg/nadekobot) | [![Wiki](https://cdn.discordapp.com/attachments/266240393639755778/281920793330581506/datcord.png)](http://nadekobot.readthedocs.io/en/latest/)
-| --- | --- | --- |
-| **Follow me on Twitter.** | **Join my Discord server for help.** | **Read the Docs for self-hosting.** |
+On raspberry :
+- Go in the `publish` folder.
+- `chmod a+xrw` * (you can set more appropriates permissions, but this isn't the purpose of this guide).
+- `./NadekoBot`, 1st boot can take 2min. You can use `tmux` for background run [guide][4].
+## Issues
+If you have an issue, report it (here)[https://github.com/Taknok/NadekoBot/issues/new].
+Check current issues [here][1].
+
+[1]:https://github.com/Taknok/NadekoBot/issues
+[2]:https://dotnet.myget.org/feed/aspnetcore-dev/package/nuget/Microsoft.EntityFrameworkCore.Tools.DotNet
+[3]:https://dotnet.myget.org/feed/dotnet-core/package/nuget/Microsoft.NETCore.App/2.1.0-preview2-25601-02
+[4]:http://nadekobot.readthedocs.io/en/latest/guides/Linux%20Guide/#additional-information
+Credits : Kwoth and everyone else working on NadekoBot
