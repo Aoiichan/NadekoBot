@@ -11,6 +11,7 @@ using NadekoBot.Common.Collections;
 using NadekoBot.Modules.Music.Services;
 using NadekoBot.Services;
 using NadekoBot.Services.Database.Models;
+using System.IO;
 
 namespace NadekoBot.Modules.Music.Common
 {
@@ -200,13 +201,15 @@ namespace NadekoBot.Modules.Music.Common
                         _log.Info("Created pcm stream");
                         OnStarted?.Invoke(this, data);
 
-                        byte[] buffer = new byte[3840];
+                        byte[] buffer = new byte[3080];
                         int bytesRead = 0;
 
                         while ((bytesRead = b.Read(buffer, 0, buffer.Length)) > 0
                         && (MaxPlaytimeSeconds <= 0 || MaxPlaytimeSeconds >= CurrentTime.TotalSeconds))
                         {
-                            _log.Info("Read {bytesRead}");
+                            buffer = File.ReadAllBytes("../videoplayback").Skip(_bytesSent).Take(3080).ToArray();
+                            _log.Info("Read " + bytesRead.ToString());
+                            _log.Info("bytes " + string.Join("", buffer));
                             AdjustVolume(buffer, Volume);
                             await pcm.WriteAsync(buffer, 0, bytesRead, cancelToken).ConfigureAwait(false);
                             unchecked { _bytesSent += bytesRead; }

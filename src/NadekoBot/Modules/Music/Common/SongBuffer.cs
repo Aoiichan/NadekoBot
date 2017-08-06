@@ -77,7 +77,7 @@ Check the guides for your platform on how to setup ffmpeg correctly:
         {
             if (string.IsNullOrWhiteSpace(e.Data))
                 return;
-            _log.Error(">>> " + e.Data);
+            _log.Error(">>>< " + e.Data);
             if (e.Data?.Contains("Error in the pull function") == true)
             {
                 _log.Error("Ignore this.");
