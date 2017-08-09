@@ -6,7 +6,7 @@ This is more a hack for the moment, check the current [issues][1] !
 On Windows :
 - Download & install git : https://desktop.github.com/
 - Download & install the installer dotnet sdk cli 2.1.0: https://github.com/dotnet/cli
-- Clone the repository with git.
+- Clone this repository with git.
 - Open a terminal in `src/NadekoBot` (windows with `ctrl + L` + `powershell` because `cmd` doesn't work).
 - Add the pkg [EntityFrameworkCore.Tools.Dotnet][3] with
 ```
