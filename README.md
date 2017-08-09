@@ -31,8 +31,9 @@ On windows :
 
 On raspberry :
 - Go in the `publish` folder.
-- `chmod a+xrw` * (you can set more appropriates permissions, but this isn't the purpose of this guide).
+- `chmod a+xrw *` (you can set more appropriates permissions, but this isn't the purpose of this guide).
 - `./NadekoBot`, 1st boot can take 2min. You can use `tmux` for background run [guide][5].
+
 ## Issues
 If you have an issue, report it [here][2].
 Check current issues [here][1].
