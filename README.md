@@ -30,9 +30,9 @@ On windows :
 - Transfert `publish` from `./bin/Release/netcoreapp2.0/ubuntu.16.04-arm/` to the raspberry.
 
 On raspberry :
-- Go in the `publish` folder.
+- Go into the `publish` folder.
 - `chmod a+xrw *` (you can set more appropriates permissions, but this isn't the purpose of this guide).
-- `./NadekoBot`, 1st boot can take 2min. You can use `tmux` for background run [guide][5].
+- `./NadekoBot`, 1st boot can take 2min. You can use `tmux` for background run : [guide][5].
 
 ## Issues
 If you have an issue, report it [here][2].
