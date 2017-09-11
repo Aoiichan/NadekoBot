@@ -27,7 +27,9 @@ On windows :
 - `dotnet publish -r ubuntu.16.04-arm -c Release`
 - Create your `credential.json` : http://nadekobot.readthedocs.io/en/latest/JSON%20Explanations/
 - Copy `credential.json` in `./bin/Release/netcoreapp2.0/ubuntu.16.04-arm/publish`.
+- :warning: If it's not the 1st install and you want to keep your data, backup/copy the folder `data`.
 - Transfert `publish` from `./bin/Release/netcoreapp2.0/ubuntu.16.04-arm/` to the raspberry.
+- If saved previously, restore your `data` backup folder in `publish`.
 
 On raspberry :
 - Go into the `publish` folder.
