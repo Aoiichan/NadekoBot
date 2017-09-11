@@ -29,7 +29,7 @@ namespace NadekoBot.Modules.Games
             [RequireContext(ContextType.Guild)]
             public async Task Hangmanlist()
             {
-                await Context.Channel.SendConfirmAsync(Format.Code(GetText("hangman_types", Prefix)) + "\n" + string.Join(", ", TermPool.data.Keys));
+                await Context.Channel.SendConfirmAsync(Format.Code(GetText("hangman_types", Prefix)) + "\n" + string.Join(", ", TermPool.Data.Keys));
             }
 
             [NadekoCommand, Usage, Description, Aliases]
@@ -113,7 +113,8 @@ namespace NadekoBot.Modules.Games
 
             private Task Hm_OnGuessSucceeded(Hangman game, string user, char guess)
             {
-                return Context.Channel.SendConfirmAsync($"Hangman Game ({game.TermType})", $"{user} guessed a letter `{guess}`!\n" + game.ScrambledWord + "\n" + game.GetHangman());
+                return Context.Channel.SendConfirmAsync($"Hangman Game ({game.TermType})", $"{user} guessed a letter `{guess}`!\n" + game.ScrambledWord + "\n" + game.GetHangman(),
+                    footer: string.Join(" ", game.PreviousGuesses));
             }
 
             private Task Hm_OnGuessFailed(Hangman game, string user, char guess)

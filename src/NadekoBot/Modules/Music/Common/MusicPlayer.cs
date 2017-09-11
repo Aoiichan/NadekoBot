@@ -92,6 +92,7 @@ namespace NadekoBot.Modules.Music.Common
                 _fairPlay = value;
             }
         }
+        public bool AutoDelete { get; set; }
         public uint MaxPlaytimeSeconds { get; set; }
 
 
@@ -260,10 +261,17 @@ namespace NadekoBot.Modules.Music.Common
 
                         int queueCount;
                         bool stopped;
+                        int currentIndex;
                         lock (locker)
                         {
                             queueCount = Queue.Count;
                             stopped = Stopped;
+                            currentIndex = Queue.CurrentIndex;
+                        }
+
+                        if (AutoDelete && !RepeatCurrentSong && !RepeatPlaylist && data.Song != null)
+                        {
+                            Queue.RemoveSong(data.Song);
                         }
 
                         if (!manualIndex && (!RepeatCurrentSong || manualSkip))
@@ -283,7 +291,8 @@ namespace NadekoBot.Modules.Music.Common
                                     {
                                         _log.Info("Loading related song");
                                         await _musicService.TryQueueRelatedSongAsync(data.Song, OutputTextChannel, VoiceChannel);
-                                        Queue.Next();
+                                        if(!AutoDelete)
+                                            Queue.Next();
                                     }
                                     catch
                                     {
@@ -331,8 +340,9 @@ namespace NadekoBot.Modules.Music.Common
                                     _log.Info("Next song");
                                     lock (locker)
                                     {
-                                        if(!Stopped)
-                                            Queue.Next();
+                                        if (!Stopped)
+                                            if(!AutoDelete)
+                                                Queue.Next();
                                     }
                                 }
                             }
@@ -406,7 +416,17 @@ namespace NadekoBot.Modules.Music.Common
                 if (Exited)
                     return -1;
                 Queue.Add(song);
-                return Queue.Count;
+                return Queue.Count - 1;
+            }
+        }
+
+        public int EnqueueNext(SongInfo song)
+        {
+            lock (locker)
+            {
+                if (Exited)
+                    return -1;
+                return Queue.AddNext(song);
             }
         }
 
@@ -418,6 +438,8 @@ namespace NadekoBot.Modules.Music.Common
             {
                 if (Exited)
                     return;
+                if (AutoDelete && index >= Queue.CurrentIndex && index > 0)
+                    index--;
                 Queue.CurrentIndex = index;
                 manualIndex = true;
                 Stopped = false;

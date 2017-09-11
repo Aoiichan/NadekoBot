@@ -11,13 +11,10 @@ using NadekoBot.Modules.Games.Services;
 
 namespace NadekoBot.Modules.Games
 {
-    /*todo more games
+    /* more games
     - Blackjack
     - Shiritori
     - Simple RPG adventure
-    - The nunchi game
-    - Wheel of fortune
-    - Connect 4
     */
     public partial class Games : NadekoTopLevelModule<GamesService>
     {
@@ -143,7 +140,7 @@ namespace NadekoBot.Modules.Games
                 hot = NextDouble(0, 5);
                 crazy = NextDouble(4, 10);
                 advice = 
-                    "This is your NO-GO ZONE. We do not hang around, and date, and marry women who are atleast, in our mind, a 5. " +
+                    "This is your NO-GO ZONE. We do not hang around, and date, and marry women who are at least, in our mind, a 5. " +
                     "So, this is your no-go zone. You don't go here. You just rule this out. Life is better this way, that's the way it is.";
             }
             else if (roll < 750)

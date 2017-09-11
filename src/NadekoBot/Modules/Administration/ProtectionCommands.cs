@@ -29,13 +29,22 @@ namespace NadekoBot.Modules.Administration
 
             private string GetAntiSpamString(AntiSpamStats stats)
             {
-                var ignoredString = string.Join(", ", stats.AntiSpamSettings.IgnoredChannels.Select(c => $"<#{c.ChannelId}>"));
+                var settings = stats.AntiSpamSettings;
+                var ignoredString = string.Join(", ", settings.IgnoredChannels.Select(c => $"<#{c.ChannelId}>"));
 
                 if (string.IsNullOrWhiteSpace(ignoredString))
                     ignoredString = "none";
+
+                string add = "";
+                if (settings.Action == PunishmentAction.Mute
+                    && settings.MuteTime > 0)
+                {
+                    add = " (" + settings.MuteTime + "s)";
+                }
+
                 return GetText("spam_stats",
-                        Format.Bold(stats.AntiSpamSettings.MessageThreshold.ToString()), 
-                        Format.Bold(stats.AntiSpamSettings.Action.ToString()), 
+                        Format.Bold(settings.MessageThreshold.ToString()),
+                        Format.Bold(settings.Action.ToString() + add),
                         ignoredString);
             }
 
@@ -60,7 +69,7 @@ namespace NadekoBot.Modules.Administration
                     await ReplyErrorLocalized("raid_time", 2, 300).ConfigureAwait(false);
                     return;
                 }
-                
+
                 if (_service.AntiRaidGuilds.TryRemove(Context.Guild.Id, out _))
                 {
                     using (var uow = _db.UnitOfWork)
@@ -112,11 +121,9 @@ namespace NadekoBot.Modules.Administration
             [NadekoCommand, Usage, Description, Aliases]
             [RequireContext(ContextType.Guild)]
             [RequireUserPermission(GuildPermission.Administrator)]
-            public async Task AntiSpam(int messageCount = 3, PunishmentAction action = PunishmentAction.Mute)
+            [Priority(1)]
+            public async Task AntiSpam()
             {
-                if (messageCount < 2 || messageCount > 10)
-                    return;
-                
                 if (_service.AntiSpamGuilds.TryRemove(Context.Guild.Id, out var removed))
                 {
                     removed.UserStats.ForEach(x => x.Value.Dispose());
@@ -131,6 +138,21 @@ namespace NadekoBot.Modules.Administration
                     await ReplyConfirmLocalized("prot_disable", "Anti-Spam").ConfigureAwait(false);
                     return;
                 }
+
+                await AntiSpam(3).ConfigureAwait(false);
+            }
+
+            [NadekoCommand, Usage, Description, Aliases]
+            [RequireContext(ContextType.Guild)]
+            [RequireUserPermission(GuildPermission.Administrator)]
+            [Priority(0)]
+            public async Task AntiSpam(int messageCount, PunishmentAction action = PunishmentAction.Mute, int time = 0)
+            {
+                if (messageCount < 2 || messageCount > 10)
+                    return;
+
+                if (time < 0 || time > 60 * 12)
+                    return;
 
                 try
                 {
@@ -149,10 +171,15 @@ namespace NadekoBot.Modules.Administration
                     {
                         Action = action,
                         MessageThreshold = messageCount,
+                        MuteTime = time,
                     }
                 };
 
-                _service.AntiSpamGuilds.AddOrUpdate(Context.Guild.Id, stats, (key, old) => stats);
+                stats = _service.AntiSpamGuilds.AddOrUpdate(Context.Guild.Id, stats, (key, old) =>
+                {
+                    stats.AntiSpamSettings.IgnoredChannels = old.AntiSpamSettings.IgnoredChannels;
+                    return stats;
+                });
 
                 using (var uow = _db.UnitOfWork)
                 {
