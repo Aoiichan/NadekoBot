@@ -6,7 +6,8 @@ This is more a hack for the moment, check the current [issues][1] !
 On Windows :
 - Download & install git : https://desktop.github.com/
 - Download & install the installer dotnet sdk cli 2.1.0: https://github.com/dotnet/cli
-- Clone this repository with git.
+- Clone this repository with git. (On `gitHub.com`, navigate to the `Code` tab of the repository, then on the right side of the screen, click `Clone or download`. Click `Open in Desktop`, this will open GitHub Desktop. Select where you’d like to save it locally under `Local Path` and then click `Clone`)
+
 - Open a terminal in `src/NadekoBot` (windows with `ctrl + L` + `powershell` because `cmd` doesn't work).
 - Add the pkg [EntityFrameworkCore.Tools.Dotnet][3] with
 ```
@@ -32,7 +33,7 @@ On windows :
 - If saved previously, restore your `data` backup folder in `publish`.
 
 On raspberry :
-- Go into the `publish` folder.
+- Go into the `publish` folder. 
 - `chmod a+xrw *` (you can set more appropriates permissions, but this isn't the purpose of this guide).
 - `./NadekoBot`, 1st boot can take 2min. You can use `tmux` for background run : [guide][5].
 
