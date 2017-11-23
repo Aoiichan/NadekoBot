@@ -5,25 +5,17 @@ This is more a hack for the moment, check the current [issues][1] !
 ### Setup
 On Windows :
 - Download & install git : https://desktop.github.com/
-- Download & install the installer dotnet sdk cli 2.1.0: https://github.com/dotnet/cli
+- Download & install the installer dotnet sdk cli 2.1.0: https://www.microsoft.com/net/learn/get-started/windows
 - Clone this repository with git. (On `gitHub.com`, navigate to the `Code` tab of the repository, then on the right side of the screen, click `Clone or download`. Click `Open in Desktop`, this will open GitHub Desktop. Select where you’d like to save it locally under `Local Path` and then click `Clone`)
 
-- Open a terminal in `src/NadekoBot` (windows with `ctrl + L` + `powershell` because `cmd` doesn't work).
-- Add the pkg [EntityFrameworkCore.Tools.Dotnet][3] with
-```
-dotnet add package Microsoft.EntityFrameworkCore.Tools.DotNet --version 2.1.0-preview1-26462 --source https://dotnet.myget.org/F/aspnetcore-dev/api/v3/index.json
-```
-- Add the pkg [Microsoft.NETCore.App][4] with
-```
-dotnet add package Microsoft.NETCore.App --version 2.1.0-preview2-25601-02 --source https://dotnet.myget.org/F/dotnet-core/api/v3/index.json
-```
 On Raspberry :
 - `sudo apt update`
 - `sudo apt upgrade`
-- `sudo apt install libunwind8 libunwind8-dev gettext libicu-dev liblttng-ust-dev libcurl4-openssl-dev libssl-dev uuid-dev unzip`
+- `sudo apt install libunwind8 libunwind8-dev gettext libicu-dev liblttng-ust-dev libcurl4-openssl-dev libssl-dev uuid-dev unzip youtube-dl  ffmpeg`
 
 ### Build
 On windows :
+- Open a powershell (in the folder `Ctrl + L` then `powershell`)
 - `dotnet restore`
 - `dotnet publish -r ubuntu.16.04-arm -c Release`
 - Create your `credential.json` : http://nadekobot.readthedocs.io/en/latest/JSON%20Explanations/
