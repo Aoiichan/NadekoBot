@@ -11,7 +11,7 @@ On Windows :
 On Raspberry :
 - `sudo apt update`
 - `sudo apt upgrade`
-- `sudo apt install libunwind8 libunwind8-dev gettext libicu-dev liblttng-ust-dev libcurl4-openssl-dev libssl-dev uuid-dev unzip youtube-dl  ffmpeg`
+- `sudo apt install libunwind8 libunwind8-dev gettext libicu-dev liblttng-ust-dev libcurl4-openssl-dev libssl-dev uuid-dev unzip youtube-dl libopus0 opus-tools libopus-dev libsodium-dev ffmpeg tmux python python3-pip redis-server`
 
 ### Build
 On windows :
