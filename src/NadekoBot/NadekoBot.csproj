@@ -10,7 +10,7 @@
     <AssemblyName>NadekoBot</AssemblyName>
     <OutputType>Exe</OutputType>
     <PackageId>NadekoBot</PackageId>
-    <RuntimeFrameworkVersion>2.1.0-preview2-25601-02</RuntimeFrameworkVersion>
+    <RuntimeFrameworkVersion>2.0.3</RuntimeFrameworkVersion>
     <!--<PackageTargetFallback>$(PackageTargetFallback);dnxcore50;portable-net45+win8+wpa81</PackageTargetFallback>-->
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
@@ -66,14 +66,14 @@
     <PackageReference Include="Google.Apis.Customsearch.v1" Version="1.20.0.466" />
     <PackageReference Include="ImageSharp" Version="1.0.0-alpha9-00173" />
     <PackageReference Include="ImageSharp.Drawing" Version="1.0.0-alpha9-00168" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.0-preview1-26462" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.1.0-preview1-26462" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.1.0-preview1-26462" />
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.1.0-preview1-26462" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.1.0-preview1-26462" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.1.0-preview1-26462" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.1.0-preview1-26462" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.1.0-preview1-26462" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.0.0" />
     <!--<PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.0.0-preview2-final" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.0.0-preview2-final" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.0.0-preview2-final" />
@@ -104,8 +104,9 @@
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
+
   <ItemGroup>
-    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.1.0-preview1-26462" />
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.1" />
     <DotNetCliToolReference Include="Microsoft.DotNet.Watcher.Tools" Version="1.0.0" />
   </ItemGroup>
 

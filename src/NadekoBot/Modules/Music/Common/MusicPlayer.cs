@@ -206,11 +206,8 @@ namespace NadekoBot.Modules.Music.Common
                         int bytesRead = 0;
 
                         while ((bytesRead = b.Read(buffer, 0, buffer.Length)) > 0
-                        && (MaxPlaytimeSeconds <= 0 || MaxPlaytimeSeconds >= CurrentTime.TotalSeconds))
+                       && (MaxPlaytimeSeconds <= 0 || MaxPlaytimeSeconds >= CurrentTime.TotalSeconds))
                         {
-                            buffer = File.ReadAllBytes("../videoplayback").Skip(_bytesSent).Take(3080).ToArray();
-                            _log.Info("Read " + bytesRead.ToString());
-                            _log.Info("bytes " + string.Join("", buffer));
                             AdjustVolume(buffer, Volume);
                             await pcm.WriteAsync(buffer, 0, bytesRead, cancelToken).ConfigureAwait(false);
                             unchecked { _bytesSent += bytesRead; }
