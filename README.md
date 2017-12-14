@@ -5,7 +5,7 @@ This is more a hack for the moment, check the current [issues][1] !
 ### Setup
 On Windows :
 - Download & install git : https://desktop.github.com/
-- Download & install the installer dotnet sdk cli 2.0.3: https://www.microsoft.com/net/learn/get-started/windows
+- Download & install the installer dotnet sdk cli: https://www.microsoft.com/net/learn/get-started/windows
 - Clone this repository with git. (On `gitHub.com`, navigate to the `Code` tab of the repository, then on the right side of the screen, click `Clone or download`. Click `Open in Desktop`, this will open GitHub Desktop. Select where you’d like to save it locally under `Local Path` and then click `Clone`)
 
 On Raspberry :
