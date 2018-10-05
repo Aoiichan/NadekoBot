@@ -2,7 +2,15 @@
 This project is tested only on raspbian.<br>
 This is more a hack for the moment, check the current [issues][1] !
 ## Installation guide
-### Setup
+### Kwoth repo (recommended) 
+- On the raspberry download dotnet for arm32 : https://www.microsoft.com/net/download
+- Clone Kwoth repo : https://github.com/Kwoth/NadekoBot
+- In the project folder run `dotnet restore`
+- `dotnet build -c Release`
+- `dotnet run -c Release`
+
+### Old version (this repo)
+#### Setup
 On Windows :
 - Download & install git : https://desktop.github.com/
 - Download & install the installer dotnet sdk cli: https://www.microsoft.com/net/learn/get-started/windows
@@ -13,7 +21,7 @@ On Raspberry :
 - `sudo apt upgrade`
 - `sudo apt install libunwind8 libunwind8-dev gettext libicu-dev liblttng-ust-dev libcurl4-openssl-dev libssl-dev uuid-dev unzip youtube-dl libopus0 opus-tools libopus-dev libsodium-dev ffmpeg tmux python python3-pip redis-server`
 
-### Build
+#### Build
 On windows :
 - Open a powershell (in the folder `Ctrl + L` then `powershell`)
 - `dotnet restore`
@@ -30,6 +38,9 @@ On raspberry :
 - `./NadekoBot`, 1st boot can take 2min. You can use `tmux` for background run : [guide][5].
 
 ## Issues
+
+:warning: Youtube-dl issue : https://github.com/Kwoth/NadekoBot/issues/1053#issuecomment-419562820
+
 If you have an issue, report it [here][2].
 Check current issues [here][1].
 
