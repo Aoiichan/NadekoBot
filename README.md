@@ -2,6 +2,8 @@
 This project is tested only on raspbian.<br>
 This is more a hack for the moment, check the current [issues][1] !
 ## Installation guide
+### Minimal configuration
+[Thank you Macley-Kun](https://github.com/Taknok/NadekoBot/issues/2#issuecomment-464461117)
 ### Kwoth repo (recommended) 
 - On the raspberry download dotnet for arm32 : https://www.microsoft.com/net/download
 - Clone Kwoth repo : https://github.com/Kwoth/NadekoBot
